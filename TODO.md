@@ -1,11 +1,9 @@
 # Zu tun
 
 ## Programm
-+ `permuddation()` für Python implementieren
 + Plain C Array anstatt `std::vector` in C++ Version verwenden
 
 ## Organisation
-+ Set up Git
 + In GitHub Repository online speichern
 
 ## Project R
