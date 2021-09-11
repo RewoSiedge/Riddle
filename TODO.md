@@ -1,10 +1,10 @@
 # Zu tun
 
 ## Programm
-+ Plain C Array anstatt `std::vector` in C++ Version verwenden
++ Problem mit Umlauten in C++ Version fick(s)en
 
 ## Organisation
-+ In GitHub Repository online speichern
+*All done :)*
 
 ## Project R
 + Automatisiertes Verfahren zum Testen für alle möglichen Wortlängen und Aufzeichnung der gesammelten Zeitdaten
