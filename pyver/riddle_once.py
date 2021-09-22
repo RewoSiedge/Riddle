@@ -1,4 +1,6 @@
 import itertools
+import sys
+
 def idk_man(ausgangswort):
     anagramme = set(["".join(perm) for perm in itertools.permutations(ausgangswort)])
     return anagramme
@@ -35,7 +37,10 @@ woerter = open("german.dic", "r", encoding = "latin-1")
 woerterliste = woerter.readlines()
 woerterliste = [i.lower().strip("\n") for i in woerterliste]
 woerter.close()
-wort = "blumentopf"
+try:
+    wort = sys.argv[1]
+except IndexError:
+    wort = "arsch"
 permuddation(wort, 0, len(wort))
 j = False 
 
