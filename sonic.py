@@ -20,7 +20,7 @@ if __name__ == "__main__":
         bis = 12
 
     for i in range(von, bis + 1):
-        wort = konsonanten[:i]
-        ergebnicpp = subprocess.check_output(["/usr/bin/time", "--format='%e'", "cver/arsch"], stderr=subprocess.STDOUT)
-        ergebnipy = subprocess.check_output(["/usr/bin/time", "--format='%e'", "python", "pyver/riddle_once.py"], stderr=subprocess.STDOUT)
-        print(f"{i}: (c++) {ergebniscpp[-5:-1]} (py) {ergebnispy[-5:-1]}")
+        wort = ''.join(konsonanten[:i])
+        ergebnicpp = subprocess.check_output(["gtime", "--format='%e'", "cver/arsch", wort], stderr=subprocess.STDOUT)
+        ergebnipy = subprocess.check_output(["gtime", "--format='%e'", "python3", "pyver/riddle_once.py", wort], stderr=subprocess.STDOUT)
+        print(f"{i}: (c++) {ergebnicpp[-6:-2].decode('utf-8')} (py) {ergebnipy[-6:-2].decode('utf-8')}")
