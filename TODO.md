@@ -1,6 +1,7 @@
 # Zu tun
 
 ## Programm
++ Error Handling falls Datei nicht existiert
 + Problem mit Umlauten in C++ Version fick(s)en
 
 ## Organisation
