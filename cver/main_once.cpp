@@ -78,6 +78,6 @@ int main(int argc, char **argv) {
     }
   }
   if (!funden) {
-    cout << "dazu gibt es leider nichts :(\n";
+    cerr << "dazu gibt es leider nichts :(\n";
   }
 }

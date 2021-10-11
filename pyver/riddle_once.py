@@ -49,4 +49,4 @@ for i in anagramme:
         print(i, "\n")
         j = True
 if j == False:
-    print("\ndazu gibt es leider nichts :(\n")
+    print("\ndazu gibt es leider nichts :(\n", file=sys.stderr)
