@@ -4,6 +4,8 @@
 import string
 import sys
 import subprocess
+from subprocess import DEVNULL
+import resource
 
 # Liste von Konsonanten
 konsonanten = [letter for letter in list(string.ascii_lowercase) if letter not in ["a", "e", "i", "o", "u"]]
@@ -19,8 +21,15 @@ if __name__ == "__main__":
         von = 1
         bis = 12
 
+    zeiten = []
     for i in range(von, bis + 1):
         wort = ''.join(konsonanten[:i])
-        ergebnicpp = subprocess.check_output(["gtime", "--format='%e'", "cver/arsch", wort], stderr=subprocess.STDOUT)
-        ergebnipy = subprocess.check_output(["gtime", "--format='%e'", "python3", "pyver/riddle_once.py", wort], stderr=subprocess.STDOUT)
-        print(f"{i}: (c++) {ergebnicpp[-6:-2].decode('utf-8')} (py) {ergebnipy[-6:-2].decode('utf-8')}")
+        vorzeit = resource.getrusage(resource.RUSAGE_CHILDREN).ru_utime
+        subprocess.call(["cver/arsch", wort],
+                        stdout=DEVNULL, stderr=DEVNULL)
+        sandwichzeit = resource.getrusage(resource.RUSAGE_CHILDREN).ru_utime
+        subprocess.call(["python3", "pyver/riddle_once.py", wort],
+                        stdout=DEVNULL, stderr=DEVNULL)
+        nachzeit = resource.getrusage(resource.RUSAGE_CHILDREN).ru_utime
+        zeiten.append([sandwichzeit - vorzeit, nachzeit - sandwichzeit])
+        print(f"{i}: (c++) {sandwichzeit - vorzeit} (py) {nachzeit - sandwichzeit}")
